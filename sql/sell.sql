@@ -37,7 +37,20 @@ create table `order_master`(
 ) comment '订单表';
 
 -- TODO:订单详情表
-
+create table `order_detail`(
+	`detail_id` varchar(32) not null,
+	`order_id` varchar(32) not null,
+	`product_id` varchar(32) not null,
+	`product_name` varchar(64) not null,
+	`product_price` decimal(8,2) not null,
+	`product_quantity` int not null comment '商品数量',
+	`product_icon` varchar(512),
+	`create_time` timestamp not null default current_timestamp,
+	`update_time` timestamp not null default current_timestamp on update 
+				current_timestamp,
+	primary key(`detail_id`),
+	key `idx_order_id`(`order_id`),
+) comment '订单详情表';
 
 
 
